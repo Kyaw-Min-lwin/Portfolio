@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kyaw Min Lwin | Backend Architect</title>
+    <meta name="description"
+        content="Kyaw Min Lwin | Computer Science Undergraduate & Backend Developer. Specializing in Python, Algorithmic Logic, and Intelligent Systems.">
+    <meta name="theme-color" content="#050505">
+    <title>Kyaw Min Lwin | CS Student & Backend Dev</title>
 
-    <!-- External Assets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
-    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap"
         rel="stylesheet">
@@ -20,92 +21,96 @@
 
 <body>
 
-    <!-- 3D Background -->
     <div id="vanta-bg"></div>
 
-    <!-- Navigation -->
     <nav>
-        <a href="#" class="logo">KML<span>.py</span></a>
+        <a href="#hero" class="logo">KML<span>.py</span></a>
 
         <ul class="nav-links">
-            <!-- Added onclick to close menu when link is clicked -->
-            <li><a href="#about" onclick="closeMenu()">About</a></li>
-            <li><a href="#stack" onclick="closeMenu()">Stack</a></li>
-            <li><a href="#projects" onclick="closeMenu()">Deployments</a></li>
-            <li><a href="#contact" class="cta-btn-nav" onclick="closeMenu()">Handshake</a></li>
+            <li><a href="#about" class="nav-item">Profile</a></li>
+            <li><a href="#stack" class="nav-item">Competencies</a></li>
+            <li><a href="#projects" class="nav-item">Engineering</a></li>
+            <li><a href="#contact" class="cta-btn-nav nav-item">Contact</a></li>
         </ul>
 
-        <div class="hamburger" onclick="toggleMenu()">
+        <div class="hamburger" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="hero">
         <div class="container hero-container">
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-                <p class="greeting">System.out.print("Hello");</p>
-                <h1>Architecting<br>Intelligence.</h1>
+                <p class="greeting">> import systems.backend as core</p>
+                <h1 class="glitch-text" data-text="Logic over Hype.">Logic over<br>Hype.</h1>
                 <div class="typewriter">
-                    I build <span id="typing-text"></span><span class="cursor"></span>
+                    I engineer <span id="typing-text"></span><span class="cursor"></span>
                 </div>
                 <div class="hero-btns">
-                    <a href="#projects" class="btn primary-btn">View Code</a>
-                    <a href="https://github.com/Kyaw-Min-lwin" target="_blank" class="btn secondary-btn"><i
-                            class="fab fa-github"></i> GitHub</a>
+                    <a href="#projects" class="btn primary-btn">View Projects</a>
+                    <a href="https://github.com/Kyaw-Min-lwin" target="_blank" class="btn secondary-btn"
+                        aria-label="GitHub Profile"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
         </div>
+
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <div class="container split-layout">
             <div class="about-text" data-aos="fade-up">
-                <h2 class="section-title">Deep Work Engineer</h2>
+                <h2 class="section-title">The Developer Profile</h2>
                 <p>
-                    I specialize in the invisible layer of software. Originally from Myanmar and now architecting
-                    solutions in the UK, I approach engineering with a philosophy of
-                    <strong>High ROI</strong> and <strong>absolute efficiency</strong>.
+                    I am a Computer Science undergraduate specializing in <strong>Backend Architecture</strong> and
+                    <strong>Data Structures</strong>. While many focus on the visual layer, I thrive in the logic
+                    that powers it. My strength lies in Python, database management, and the mathematical
+                    foundations of Neural Networks.
                 </p>
                 <p>
-                    Resilience is my core driver. Whether it's building a personal assistant named
-                    <strong>JARVIS</strong> to optimize my workflow or calculating backpropagation for neural networks,
-                    I focus on solving the logic puzzles that others find too complex.
+                    My philosophy is simple: <strong>Deep Work</strong>. In an industry full of distractions,
+                    I prioritize high-focus sessions to solve complex algorithmic problems. Whether it's
+                    optimizing a Flask API or coding a custom Neural Network from scratch, I aim for
+                    efficiency and mathematical precision.
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--primary);">
+                    > Currently seeking Software Development Internships.
                 </p>
             </div>
             <div class="about-stats" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-card glass">
-                    <h3>2+</h3>
-                    <p>Years Python</p>
+                    <h3>CS</h3>
+                    <p>Undergrad (UK)</p>
                 </div>
                 <div class="stat-card glass">
-                    <h3><i class="fas fa-brain"></i></h3>
-                    <p>Neural Networks</p>
+                    <h3><i class="fas fa-code-branch"></i></h3>
+                    <p>Algorithms</p>
                 </div>
                 <div class="stat-card glass">
-                    <h3><i class="fas fa-server"></i></h3>
-                    <p>Backend Systems</p>
+                    <h3><i class="fas fa-database"></i></h3>
+                    <p>Backend Logic</p>
                 </div>
                 <div class="stat-card glass">
-                    <h3><i class="fas fa-clock"></i></h3>
-                    <p>Time-Boxed Focus</p>
+                    <h3><i class="fas fa-bolt"></i></h3>
+                    <p>High Efficiency</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tech Stack -->
     <section id="stack">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-right">Technological Arsenal</h2>
+            <h2 class="section-title" data-aos="fade-right">Core Competencies</h2>
 
             <div class="stack-category" data-aos="fade-up">
-                <span class="stack-label">// CORE LANGUAGES & BACKEND</span>
+                <span class="stack-label">// PRIMARY LANGUAGES & DATABASE</span>
                 <div class="tech-grid">
-                    <div class="tech-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="tech-item"><i class="devicon-python-plain colored"></i><span>Python (Advanced)</span>
+                    </div>
                     <div class="tech-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
                     <div class="tech-item"><i class="devicon-flask-original colored"></i><span>Flask</span></div>
                     <div class="tech-item"><i class="devicon-django-plain colored"></i><span>Django</span></div>
@@ -115,59 +120,85 @@
             </div>
 
             <div class="stack-category" data-aos="fade-up" data-aos-delay="100">
-                <span class="stack-label">// AI & INFRASTRUCTURE</span>
+                <span class="stack-label">// AI & SYSTEMS INFRASTRUCTURE</span>
                 <div class="tech-grid">
                     <div class="tech-item"><i class="devicon-tensorflow-original colored"></i><span>TensorFlow</span>
                     </div>
-                    <div class="tech-item"><i class="devicon-numpy-original colored"></i><span>NumPy</span></div>
+                    <div class="tech-item"><i class="devicon-numpy-original colored"></i><span>NumPy (Math)</span></div>
                     <div class="tech-item"><i class="devicon-pandas-original colored"></i><span>Pandas</span></div>
                     <div class="tech-item"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
                     <div class="tech-item"><i class="devicon-arduino-plain colored"></i><span>Arduino</span></div>
-                    <div class="tech-item"><i class="fas fa-terminal"></i><span>Bash</span></div>
+                    <div class="tech-item"><i class="fas fa-terminal"></i><span>Bash Scripting</span></div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Selected Deployments</h2>
+            <h2 class="section-title" data-aos="fade-up">Featured Engineering</h2>
             <div id="project-grid" class="grid">
-                <!-- Loader -->
-                <div class="loader" style="color: var(--primary); font-family: var(--font-code);">
-                    > Accessing GitHub API...
+                <div class="loader-container">
+                    <div class="terminal-loader">
+                        <span class="loader-text">> Fetching Repositories...</span>
+                        <span class="loader-cursor">_</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal for Readme -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" style="float:right; font-size:1.5rem; cursor:pointer; color:var(--primary);">&times;
-                Close</span>
+            <div class="modal-header">
+                <span class="modal-title">> README.md</span>
+                <span class="close-btn">&times;</span>
+            </div>
             <div id="modal-body"></div>
         </div>
     </div>
 
-    <!-- Contact Section -->
     <section id="contact">
         <div class="container" data-aos="zoom-in">
             <div class="contact-box">
-                <h2>Ready to Scale?</h2>
-                <p>I am currently open to internships and backend engineering roles.</p>
-                <a href="mailto:kyawminlwinprogrammer@gmail.com" class="btn primary-btn">Execute Collaboration</a>
+                <h2>Connection Protocol</h2>
+                <p>I focus on backend stability, automation, and data logic. <br>Open for Engineering roles.</p>
+
+                <div class="contact-links">
+                    <!-- Email -->
+                    <a href="mailto:kyawminlwinprogrammer@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>kyawminlwinprogrammer@gmail.com</span>
+                    </a>
+
+                    <!-- LinkedIn  -->
+                    <a href="https://www.linkedin.com/in/klwin/" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/kyaw-min-lwin</span>
+                    </a>
+
+                    <!-- phone -->
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+44 735 216 3125</span>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>United Kingdom</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <footer>
-        <p>Kyaw Min Lwin &copy; 2026 | Built with <span style="color:var(--primary)">Deep Work Principles</span></p>
+        <p>Kyaw Min Lwin &copy; 2026 | Powered by <span style="color:var(--primary)">Deep Work</span> & Caffeine</p>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
