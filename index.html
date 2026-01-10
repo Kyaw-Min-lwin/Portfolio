@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kyaw Min Lwin | Backend Architect</title>
 
     <!-- External Assets -->
@@ -15,7 +15,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="./styles.css">
 </head>
 
@@ -29,10 +28,11 @@
         <a href="#" class="logo">KML<span>.py</span></a>
 
         <ul class="nav-links">
-            <li><a href="#about" onclick="closeMenu()">_About</a></li>
-            <li><a href="#stack" onclick="closeMenu()">_Stack</a></li>
-            <li><a href="#projects" onclick="closeMenu()">_Deployments</a></li>
-            <li><a href="#contact" class="cta-btn-nav" onclick="closeMenu()">Initialize Handshake</a></li>
+            <!-- Added onclick to close menu when link is clicked -->
+            <li><a href="#about" onclick="closeMenu()">About</a></li>
+            <li><a href="#stack" onclick="closeMenu()">Stack</a></li>
+            <li><a href="#projects" onclick="closeMenu()">Deployments</a></li>
+            <li><a href="#contact" class="cta-btn-nav" onclick="closeMenu()">Handshake</a></li>
         </ul>
 
         <div class="hamburger" onclick="toggleMenu()">
@@ -45,8 +45,8 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="container hero-container">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
-                <p class="greeting">System.out.print("Hello, I am Kyaw Min Lwin");</p>
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <p class="greeting">System.out.print("Hello");</p>
                 <h1>Architecting<br>Intelligence.</h1>
                 <div class="typewriter">
                     I build <span id="typing-text"></span><span class="cursor"></span>
@@ -57,30 +57,26 @@
                             class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
-            <!-- Optional: Hero Image/Graphic area (kept empty for clean look or Vanta bg visibility) -->
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <div class="container split-layout">
-            <div class="about-text" data-aos="fade-right">
-                <h2 class="section-title">The "Deep Work" Engineer</h2>
+            <div class="about-text" data-aos="fade-up">
+                <h2 class="section-title">Deep Work Engineer</h2>
                 <p>
-                    I specialize in the invisible layer of software—the heavy lifting that powers intelligent systems.
-                    Originally from Myanmar and now architecting solutions in the UK, I approach engineering with a
-                    philosophy of
+                    I specialize in the invisible layer of software. Originally from Myanmar and now architecting
+                    solutions in the UK, I approach engineering with a philosophy of
                     <strong>High ROI</strong> and <strong>absolute efficiency</strong>.
                 </p>
                 <p>
-                    My background has taught me that resilience is not optional; it is a requirement for both systems
-                    and life.
-                    Whether it's building a personal assistant named <strong>JARVIS</strong> or optimizing neural
-                    networks,
-                    I focus on automation, scalability, and solving logic puzzles that others find too complex.
+                    Resilience is my core driver. Whether it's building a personal assistant named
+                    <strong>JARVIS</strong> to optimize my workflow or calculating backpropagation for neural networks,
+                    I focus on solving the logic puzzles that others find too complex.
                 </p>
             </div>
-            <div class="about-stats" data-aos="fade-left">
+            <div class="about-stats" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-card glass">
                     <h3>2+</h3>
                     <p>Years Python</p>
@@ -104,7 +100,7 @@
     <!-- Tech Stack -->
     <section id="stack">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Technological Arsenal</h2>
+            <h2 class="section-title" data-aos="fade-right">Technological Arsenal</h2>
 
             <div class="stack-category" data-aos="fade-up">
                 <span class="stack-label">// CORE LANGUAGES & BACKEND</span>
@@ -150,7 +146,8 @@
     <!-- Modal for Readme -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" style="float:right; font-size:1.5rem; cursor:pointer; color:var(--primary);">&times;
+                Close</span>
             <div id="modal-body"></div>
         </div>
     </div>
@@ -160,8 +157,7 @@
         <div class="container" data-aos="zoom-in">
             <div class="contact-box">
                 <h2>Ready to Scale?</h2>
-                <p>I am currently open to internships and backend engineering roles. Let's discuss high-leverage
-                    software solutions.</p>
+                <p>I am currently open to internships and backend engineering roles.</p>
                 <a href="mailto:kyawminlwinprogrammer@gmail.com" class="btn primary-btn">Execute Collaboration</a>
             </div>
         </div>
@@ -177,9 +173,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
     <script src="./script.js"></script>
-
-
 </body>
 
 </html>

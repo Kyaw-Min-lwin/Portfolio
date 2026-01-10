@@ -9,7 +9,10 @@ const navLinks = document.querySelector('.nav-links');
 
 // --- 1. VISUAL EFFECTS ---
 
-// Vanta.js (Background)
+// Vanta.js (Background) - Optimized for Mobile
+// If screen width is small, we reduce points to save battery
+const isMobile = window.innerWidth < 768;
+
 try {
     VANTA.NET({
         el: "#vanta-bg",
@@ -20,11 +23,11 @@ try {
         minWidth: 200.00,
         scale: 1.00,
         scaleMobile: 1.00,
-        color: 0x00f2ff,       // Primary Cyan
+        color: 0x00f2ff,
         backgroundColor: 0x050505,
-        points: 10.00,
-        maxDistance: 22.00,
-        spacing: 18.00,
+        points: isMobile ? 6.00 : 10.00, // Fewer points on mobile
+        maxDistance: isMobile ? 18.00 : 22.00,
+        spacing: isMobile ? 22.00 : 18.00,
         showDots: true
     });
 } catch (e) {
@@ -34,7 +37,7 @@ try {
 // AOS
 AOS.init({
     once: true,
-    offset: 100,
+    offset: 50, // Trigger earlier on mobile
     duration: 800
 });
 
@@ -61,7 +64,7 @@ function type() {
 
     if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at end
+        typeSpeed = 2000;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -72,25 +75,27 @@ function type() {
 }
 document.addEventListener('DOMContentLoaded', type);
 
-// --- 2. MOBILE MENU ---
+// --- 2. MOBILE MENU LOGIC ---
 function toggleMenu() {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('active');
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
 }
 
 function closeMenu() {
     hamburger.classList.remove('active');
     navLinks.classList.remove('active');
+    document.body.style.overflow = 'auto';
 }
 
 // --- 3. GITHUB FETCH LOGIC ---
 
 async function fetchProjects() {
-    // Fallback data in case API fails or has no tagged repos
     const fallbackProjects = [
         {
             name: "JARVIS-Personal-Assistant",
-            description: "An automated voice-command assistant utilizing Python scripts for daily workflow optimization and deep work enforcement.",
+            description: "Automated voice-command assistant utilizing Python scripts for daily workflow optimization.",
             language: "Python",
             topics: ["automation", "voice-recognition", "productivity"],
             html_url: "https://github.com/Kyaw-Min-lwin"
@@ -113,15 +118,12 @@ async function fetchProjects() {
 
     try {
         const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-
-        if (!response.ok) throw new Error("API Limit or Network Error");
+        if (!response.ok) throw new Error("API Limit");
 
         const repos = await response.json();
         const featuredRepos = repos.filter(repo => repo.topics.includes('portfolio-featured'));
 
         container.innerHTML = '';
-
-        // If no featured repos found, use fallback
         const projectsToShow = featuredRepos.length > 0 ? featuredRepos : fallbackProjects;
 
         projectsToShow.forEach(repo => {
@@ -129,18 +131,19 @@ async function fetchProjects() {
         });
 
     } catch (error) {
-        console.warn("GitHub API failed, using fallback data.");
         container.innerHTML = '';
         fallbackProjects.forEach(repo => createProjectCard(repo, false));
     }
 
-    // Initialize Tilt on new cards
-    VanillaTilt.init(document.querySelectorAll(".card"), {
-        max: 10,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.1,
-    });
+    // Tilt Effect - Only on Desktop to save battery on mobile
+    if (!isMobile) {
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.1,
+        });
+    }
 }
 
 function createProjectCard(repo, isRealData) {
@@ -151,7 +154,6 @@ function createProjectCard(repo, isRealData) {
     const description = repo.description || "Architectural implementation of backend logic.";
     const topics = repo.topics ? repo.topics.slice(0, 3).map(t => `<span>#${t}</span>`).join('') : '';
 
-    // If real data, use onclick to open modal. If fallback, link to profile.
     const btnAction = isRealData
         ? `onclick="openReadme('${repo.name}')"`
         : `onclick="window.open('${repo.html_url}', '_blank')"`;
@@ -160,15 +162,13 @@ function createProjectCard(repo, isRealData) {
 
     card.innerHTML = `
                 <div class="card-header">
-                    <i class="far fa-folder folder-icon"></i>
-                    <a href="${repo.html_url}" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
+                    <i class="far fa-folder" style="color:var(--primary)"></i>
+                    <a href="${repo.html_url}" target="_blank" style="color:var(--text-muted)"><i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <h3>${repo.name.replace(/-/g, ' ')}</h3>
                 <p>${description}</p>
                 <div class="tech-tags">${topics}</div>
-                <div class="action-row">
-                    <button class="view-btn" ${btnAction}>${btnText}</button>
-                </div>
+                <button class="view-btn" ${btnAction}>${btnText}</button>
             `;
 
     container.appendChild(card);
@@ -178,6 +178,7 @@ function createProjectCard(repo, isRealData) {
 
 async function openReadme(repoName) {
     modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling background
     modalBody.innerHTML = '<p style="color:var(--primary); font-family:var(--font-code);">> Fetching Documentation...</p>';
 
     try {
@@ -185,7 +186,7 @@ async function openReadme(repoName) {
         const data = await response.json();
 
         if (data.content) {
-            const decodedContent = atob(data.content); // Decode Base64
+            const decodedContent = atob(data.content);
             modalBody.innerHTML = marked.parse(decodedContent);
         } else {
             modalBody.innerHTML = '<p>No README.md found in repository.</p>';
@@ -195,8 +196,17 @@ async function openReadme(repoName) {
     }
 }
 
-closeModal.onclick = () => { modal.style.display = 'none'; };
-window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; };
+closeModal.onclick = () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+};
+window.onclick = (event) => {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+};
 
 // Run
 fetchProjects();
+
